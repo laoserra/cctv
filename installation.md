@@ -2,10 +2,10 @@
 
 This document aims to explain how to setup the cctv project in Ubuntu Server (v. 18.04 Bionic Beaver).
 
-The installation comprises three main parts: 
+The installation comprises four main parts: 
 * the installation of tensorflow-gpu
 * the installation of tensorflow object detection API
-* create directory of the project in the server
+* the creation of the directory of the project in the server
 * the creation of a cron task.
 
 ## installation of tensorflow-gpu
