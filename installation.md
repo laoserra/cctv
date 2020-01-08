@@ -145,9 +145,9 @@ This  operation compiles all the protobuf files and creates a name_pb2.py file f
 
 ``` bash
 # Tensorflow object detection API - cctv
-export PYTHONPATH=$PYTHONPATH:/home/**username**/tensorflow/models/research
-export PYTHONPATH=$PYTHONPATH:/home/**username**/tensorflow/models/research/object_detection
-export PYTHONPATH=$PYTHONPATH:/home/**username**/tensorflow/models/research/slim
+export PYTHONPATH=$PYTHONPATH:/home/username/tensorflow/models/research
+export PYTHONPATH=$PYTHONPATH:/home/username/tensorflow/models/research/object_detection
+export PYTHONPATH=$PYTHONPATH:/home/username/tensorflow/models/research/slim
 ```
 
 ### Finalize installation
@@ -199,11 +199,11 @@ The cron file has to ne edited with the following lines:
 ``` bash
 # The same as $env
 SHELL=/bin/bash
-PATH=/usr/local/cuda-10.0/bin:/home/**username**/.local/bin:/home/**username**/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/**username**/bin
-PYTHONPATH=:/home/**username**/tensorflow/models/research:/home/**username**/tensorflow/models/research/object_detection:/home/**username**/tensorflow/models/research/slim
+PATH=/usr/local/cuda-10.0/bin:/home/username/.local/bin:/home/username/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/username/bin
+PYTHONPATH=:/home/username/tensorflow/models/research:/home/username/tensorflow/models/research/object_detection:/home/username/tensorflow/models/research/slim
 
 # run cctv.sh every 15min
-0,15,30,45 * * * * bash /home/**username**/CCTV/cctv.sh
+0,15,30,45 * * * * bash /home/username/CCTV/cctv.sh
 ```
 
 After all these operations, the project must be able to process the images that are stored in the input_folder every 15 min. The configuration of the cctv cameras to go to home position, to take a snapshot and to store the images in the input_folder, aren't covered by this tutorial.
