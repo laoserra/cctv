@@ -1,0 +1,11 @@
+# Ignore folders
+input_folder/
+models/
+output_folder/
+utils/
+
+# ignore labels file
+*.pbtxt
+
+# ignore old files
+*_old.py
