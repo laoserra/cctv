@@ -80,13 +80,16 @@ sudo pip3 install pydot-ng
 ### Installation of the remaining sw in the virtual environment of the project
 
 ``` bash
+# create python virtual environment
 $ mkvirtualenv cctv
+```
 
-(cctv)$ pip install --upgrade pip
-                        
-            pip install pandas numpy scipy matplotlib seaborn pyyaml
-      
-      pip install tensorflow-gpu==1.14 # older release 1.14
+In the cctv virtual env:
+
+``` bash
+pip install --upgrade pip
+pip install pandas numpy scipy matplotlib seaborn pyyaml
+pip install tensorflow-gpu==1.14 # older release 1.14
 ```
 
 **Note**: When updating and upgrading repositories, cuda 10.1 (or a more recent version of CUDA) will be installed alonsigde cuda 10.0. However, cuda 10.0 will still be used by tensorflow because of the .basrc configuration. You can see that by running the command “nvcc -V” rather than “nvidia-smi”. Check nvidia website for more information.
