@@ -3,8 +3,9 @@
 This document aims to explain how to setup the cctv project in Ubuntu Server (v. 18.04 Bionic Beaver).
 
 The installation comprises three main parts: 
-* The installation of tensorflow-gpu
+* the installation of tensorflow-gpu
 * the installation of tensorflow object detection API
+* create directory of the project in the server
 * the creation of a cron task.
 
 ## installation of tensorflow-gpu
@@ -55,6 +56,7 @@ Append the following lines to the .bashrc file:
 export PATH=/usr/local/cuda-10.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64
 export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+
 #virtualenvwrapper
 export WORKON_HOME=$HOME/python-virtual-environments
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -94,10 +96,12 @@ $ mkvirtualenv cctv
 Official instructions at: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 
 At #HOME, mkdir “tensorflow”
-python object_detection/builders/model_builder_test.py
-Within tensorflow directory:
 
-### git clone https://github.com/tensorflow/models
+Within tensorflow directory, git clone models: 
+
+``` bash
+git clone https://github.com/tensorflow/models
+```
 
 ### pip install packages in the python virtual environment of the project (" workon cctv")
 
@@ -136,7 +140,7 @@ This  operation compiles all the protobuf files and creates a name_pb2.py file f
 
 ### Add Libraries to PYTHONPATH in #HOME/.bashrc
 
-``` vim
+``` bash
 # Tensorflow object detection API - cctv
 export PYTHONPATH=$PYTHONPATH:/home/**username**/tensorflow/models/research
 export PYTHONPATH=$PYTHONPATH:/home/**username**/tensorflow/models/research/object_detection
@@ -159,7 +163,7 @@ python object_detection/builders/model_builder_test.py
 
 ## Create directory of the project in the server
 
-For this, copy the “CCTV” directory created by UBD, to the $HOME folder of the server.
+For this, copy the “CCTV” directory created by UBDC, to the $HOME folder of the server.
 
 The CCTV directory tree looks like the following image:
 
@@ -180,21 +184,23 @@ python detect_objects.py conf_filepat
 
 If ok, proceed. The *conf_filepath* is a configuration file with the model to use.
 
-### The bash file must be adapted for the specific server in use
+**Note**: The cctv bash file must be adapted for the specific server in use
 
 ## Create a cron task, with ”crontab -e” command
 
 The cron app is a daemon to execute scheduled commands.
  The cron task is going to edit the cron file for the user.
 
-The cron file must have the following composition:
+The cron file has to ne edited with the following lines:
 
 ``` bash
 # The same as $env
 SHELL=/bin/bash
 PATH=/usr/local/cuda-10.0/bin:/home/**username**/.local/bin:/home/**username**/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/**username**/bin
 PYTHONPATH=:/home/**username**/tensorflow/models/research:/home/**username**/tensorflow/models/research/object_detection:/home/**username**/tensorflow/models/research/slim
+
 # run cctv.sh every 15min
 0,15,30,45 * * * * bash /home/**username**/CCTV/cctv.sh
 ```
 
+After all these operations, the project must be able to process the images that are stored in the input_folder every 15 min. The configuration of the cctv cameras to go to home position, to take a snapshot and to store the images in the input_folder, aren't covered by this tutorial.
