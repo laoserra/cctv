@@ -12,4 +12,4 @@ In this project a picture is taken every 15 minutes in a specific position - hom
 
 A server machine with OS Ubuntu Server was used to run the project. Please refer to the [installation](installation.md) steps to know more about the configuration of the server.
 
-Special thanks to Christina Boididou, a former employee of UBDC, who started the development of this project and who is responsible for some of the scripts presented here.
+Special thanks to Christina Boididou, a former employee of UBDC, who started the development of this project and who is responsible for some of the scripts and ideas presented here.
